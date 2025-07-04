@@ -25,4 +25,17 @@ If you find our work useful in your research, please consider citing:
 ![qualitative.png](assets/qualitative.png)
 
 ## Usage
-### Setup Environment
+### Begin by cloning the repository:
+```bash
+git clone https://github.com/cognaclee/HOTS3D.git
+cd HOTS3D
+```
+### Installation Guide for Linux
+We provide an env_install.sh script file for setting up environment.
+```bash
+coda create -n HOTS3D python=3.10
+conda activate HOTS3D
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+bash env_install.sh
+```
+
