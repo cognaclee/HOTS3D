@@ -23,3 +23,6 @@ If you find our work useful in your research, please consider citing:
 ```
 ## Performences
 ![qualitative.png](assets/qualitative.png)
+
+## Usage
+### Setup Environment
