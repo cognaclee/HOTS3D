@@ -9,6 +9,8 @@ of the SOT map and other modules remain frozen, significantly reducing the train
 optimization during the testing phase, resulting in stronger generalization capability and semantic consistency.
 ## Citation
 If you find our work useful in your research, please consider citing:
+
+```
 @misc{li2024hots3dhypersphericaloptimaltransport,
       title={HOTS3D: Hyper-Spherical Optimal Transport for Semantic Alignment of Text-to-3D Generation}, 
       author={Zezeng Li and Weimin Wang and WenHai Li and Na Lei and Xianfeng Gu},
@@ -18,5 +20,5 @@ If you find our work useful in your research, please consider citing:
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2407.14419}, 
 }
-
+```
 
