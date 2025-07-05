@@ -1,7 +1,7 @@
 # HOTS3D
 Hyper-spherical Optimal Transport for Semantic Alignment in Text-to-3D End-to-end Generation
 ## Introduction
-![Full pipeline of our hots3d](asserts/pipeline.png)
+![Full pipeline of our hots3d](assets/pipeline.png)
 Our framework for text-guided 3D synthesis comprises three stages. Firstly, we encode the input text prompt onto the hypersphere with a pre-trained CLIP text encoder, obtaining text features. Secondly, the SOT map is induced by the gradient of a convex function that is trained via minimax optimization, and then transfers output text
 features to the image feature space. In the third stage, a generator conditioned on the output of the SOT Map was utilized to generate 3D shapes. The SOT map is a plug-
 and-play tool for aligning spherical distributions. During the training phase, we only need to optimize the parameters
