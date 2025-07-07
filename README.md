@@ -13,7 +13,7 @@ If you find our work useful in your research, please consider citing:
 ```
 @misc{li2024hots3dhypersphericaloptimaltransport,
       title={HOTS3D: Hyper-Spherical Optimal Transport for Semantic Alignment of Text-to-3D Generation}, 
-      author={Zezeng Li and Weimin Wang and WenHai Li and Na Lei and Xianfeng Gu},
+      author={Zezeng Li and Weimin Wang and Yuming Zhao and WenHai Li and Na Lei and Xianfeng Gu},
       year={2024},
       eprint={2407.14419},
       archivePrefix={arXiv},
