@@ -32,6 +32,6 @@ cd HOTS3D
 
 coda create -n HOTS3D python=3.10
 conda activate HOTS3D
-pip install -r reqirements.txt
+pip install -f enviroments.yml
 ```
 
