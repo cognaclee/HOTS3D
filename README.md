@@ -29,7 +29,7 @@ pip install -f enviroments.yml
 
 2. **Set the data paths and run the script**
 	```
-	python proprocess/save CLIP_feature.py
+	python ./proprocess/save CLIP_feature.py
 	```
  
 ### Data Preparation
@@ -37,7 +37,7 @@ pip install -f enviroments.yml
 
 2. **Set the data paths and run the script**
 	```
-	python proprocess/save CLIP_feature.py
+	python ./proprocess/save CLIP_feature.py
 	```
 
 ### Run HOTS3D
