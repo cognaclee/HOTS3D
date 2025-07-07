@@ -34,4 +34,11 @@ coda create -n HOTS3D python=3.10
 conda activate HOTS3D
 pip install -f enviroments.yml
 ```
+### Download the datasets [text2shape](http://text2shape.stanford.edu/) and [Objaverse](https://huggingface.co/datasets/allenai/objaverse)
 
+	```
+	data/
+	├── shapenetcore_partanno_segmentation_benchmark/
+	├── ScanObjectNN/
+	└── modelnet40_normal_resampled/
+	```
