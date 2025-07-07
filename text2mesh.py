@@ -33,7 +33,7 @@ guidance_scale = 15.0
 
 # text_file = '/home/lwh/code/shap-e/text_fun_result.txt'
 # text_file = '/mnt/data2/Objaverse/test/text.txt'
-# text_file = '/mnt/data2/new.txt' #输入我想生成的文本
+# text_file = '/mnt/data2/new.txt' 
 text_file = '/home/lwh/code/shap-e/text.txt'
 
 text_cont = []
@@ -45,7 +45,7 @@ with open(text_file, 'r') as f:
 #save_dir = '/home/lwh/code/shap-e/Shape_Objaverse'
 # save_dir ="/mnt/data2/results/comparison/shape/"
 save_dir ='/home/lwh/code/shap-e/shape_Result'
-#save_dir ="/mnt/data2/shape/"  #生成的3D模型的保存目录
+#save_dir ="/mnt/data2/shape/"  
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
@@ -78,7 +78,7 @@ for cnts in range(len(text_cont)):
     # meshName = os.path.join(save_dir, basename)
     with open(meshName, 'w') as f:
         t.write_obj(f)
-    # if cnts ==100:                                       这个也是测时间的
+    # if cnts ==100:                                       
     #     end_time = time.time()
     #     ave_time = (end_time - start_time) / cnts
     #     print("end_time is",end_time)
