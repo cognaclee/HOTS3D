@@ -25,7 +25,7 @@ conda activate HOTS3D
 pip install -f enviroments.yml
 ```
 ### Data Preparation
-1. **Download the datasets** [text2shape](http://text2shape.stanford.edu/) and [Objaverse](https://huggingface.co/datasets/allenai/objaverse)
+1. **Download the datasets** [text2shape](http://text2shape.stanford.edu/) and [Objaverse from Cap3D](https://huggingface.co/datasets/tiange/Cap3D)
 2. Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) to **the path of the dataset meshes**, then run the script to convert them into image-text pairs 
 	```bash
 	## Note that the mesh data needs to be in .obj format
