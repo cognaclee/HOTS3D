@@ -15,7 +15,7 @@ optimization during the testing phase, resulting in stronger generalization capa
 ![qualitative.png](assets/qualitative.png)
 
 ## Usage
-### Install requirements using following scripts.
+### Install requirements using the following scripts.
 ```bash
 git clone https://github.com/cognaclee/HOTS3D.git
 cd HOTS3D
@@ -24,14 +24,6 @@ coda create -n HOTS3D python=3.10
 conda activate HOTS3D
 pip install -f enviroments.yml
 ```
-### Data Preparation
-1. **Download the datasets** [text2shape](http://text2shape.stanford.edu/) and [Objaverse](https://huggingface.co/datasets/allenai/objaverse)
-
-2. **Set the data paths and run the script**
-	```
-	python ./proprocess/save_CLIP_feature.py
-	```
- 
 ### Data Preparation
 1. **Download the datasets** [text2shape](http://text2shape.stanford.edu/) and [Objaverse](https://huggingface.co/datasets/allenai/objaverse)
 2. Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) to **the path of the dataset meshes**, then run the script to convert them into image-text pairs 
@@ -59,7 +51,7 @@ pip install -f enviroments.yml
 	```bash
 	python ./script/inference.py
 	```
- 3. **Metrics Evaluation**
+ 4. **Metrics Evaluation**
     Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) as **the generated mesh path**, then
    
 	```bash
