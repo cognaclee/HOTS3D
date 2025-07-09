@@ -63,7 +63,6 @@ pip install -f enviroments.yml
     Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) as **the generated mesh path**, then
    
 	```bash
-	## Note that the mesh data needs to be in .obj format
 	python ./preprocess/obj2img.py
 	```
    
