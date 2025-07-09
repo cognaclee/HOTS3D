@@ -54,7 +54,7 @@ pip install -f enviroments.yml
 	```
 3. **Test**
    
-   Set the ```text_file``` in ```inference.py``` to **to your prompt file in ** ```.txt``` format, and ```OT_model``` to the path of the **pretrained SOT model**, then
+   Set the ```text_file``` in ```inference.py``` to **to your prompt file in**  ```.txt``` format, and ```OT_model``` to the path of the **pretrained SOT model**, then
    
 	```bash
 	python ./script/inference.py
@@ -70,7 +70,6 @@ pip install -f enviroments.yml
     Set ```image_dir``` in [clip_r_precision.py](./script/clip_r_precision.py) as **the generated image path** in the previous step, then
    
 	```bash
-	## Note that the mesh data needs to be in .obj format
 	python ./script/clip_r_precision.py
 	```
      Set ```pred_dir``` in [f-score.py](./script/f-score.py) as **the generated mesh path**, then
