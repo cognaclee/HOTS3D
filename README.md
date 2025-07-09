@@ -29,13 +29,17 @@ pip install -f enviroments.yml
 
 2. **Set the data paths and run the script**
 	```
-	python ./proprocess/save CLIP_feature.py
+	python ./proprocess/save_CLIP_feature.py
 	```
  
 ### Data Preparation
 1. **Download the datasets** [text2shape](http://text2shape.stanford.edu/) and [Objaverse](https://huggingface.co/datasets/allenai/objaverse)
-
-2. **Set the data paths and run the script**
+2. Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) to **the path of the dataset meshes**, then run the script to convert them into image-text pairs 
+	```bash
+	## Note that the mesh data needs to be in .obj format
+	python ./preprocess/obj2img.py
+	```
+3. **Set the data paths and run the script**
 	```
 	python ./proprocess/save CLIP_feature.py
 	```
@@ -59,7 +63,7 @@ pip install -f enviroments.yml
     Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) as **the generated mesh path**, then
    
 	```bash
-	## Note that the quad mesh data needs to be in .obj format
+	## Note that the mesh data needs to be in .obj format
 	python ./preprocess/obj2img.py
 	```
    
