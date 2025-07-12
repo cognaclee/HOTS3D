@@ -82,13 +82,11 @@ Dataset from <a href="https://github.com/kchen92/text2shape/">text2shape</a>, an
 If you find our work useful in your research, please consider citing:
 
 ```
-@misc{li2024hots3dhypersphericaloptimaltransport,
-      title={HOTS3D: Hyper-Spherical Optimal Transport for Semantic Alignment of Text-to-3D Generation}, 
-      author={Zezeng Li and Weimin Wang and Yuming Zhao and WenHai Li and Na Lei and Xianfeng Gu},
-      year={2024},
-      eprint={2407.14419},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2407.14419}, 
+@article{li2025hyper,
+  title={Hyper-spherical Optimal Transport for Semantic Alignment in Text-to-3D End-to-end Generation},
+  author={Li, Zezeng and Wang, Weimin and Zhao, Yuming and Li, Wenhai and Lei, Na and Gu, Xianfeng},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  year={2025},
+  publisher={IEEE}
 }
 ```
