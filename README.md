@@ -20,9 +20,9 @@ optimization during the testing phase, resulting in stronger generalization capa
 git clone https://github.com/cognaclee/HOTS3D.git
 cd HOTS3D
 
-coda create -n HOTS3D python=3.10
+conda create -n HOTS3D python=3.10
 conda activate HOTS3D
-pip install -f enviroments.yml
+pip install -f environments.yml
 ```
 ### Data Preparation
 1. **Download the datasets** [text2shape](http://text2shape.stanford.edu/) and [Objaverse from Cap3D](https://huggingface.co/datasets/tiange/Cap3D)
