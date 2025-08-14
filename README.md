@@ -21,6 +21,11 @@ git clone https://github.com/cognaclee/HOTS3D.git
 cd HOTS3D
 
 conda env create -y environments.yml
+
+conda activate HOTS3D
+
+#install pytorch GPU
+pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
 ```
 ### Data Preparation
 1. **Download the datasets** [text2shape](http://text2shape.stanford.edu/) and [Objaverse from Cap3D](https://huggingface.co/datasets/tiange/Cap3D)
