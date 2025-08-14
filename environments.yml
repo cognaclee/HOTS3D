@@ -39,8 +39,8 @@ dependencies:
   - zlib=1.2.13
  
   - pip:
-    - pip install git+https://github.com/openai/CLIP.git@main
-    - pip install git+https://github.com/openai/shap-e.git@main
+    - git+https://github.com/openai/CLIP.git@main
+    - git+https://github.com/openai/shap-e.git@main
     - absl-py==2.1.0
     - addict==2.4.0
     - asttokens==2.4.1
