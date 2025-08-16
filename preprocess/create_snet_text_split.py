@@ -2,8 +2,6 @@ import os
 import csv
 import numpy as np
 
-import sys
-sys.path.append('..')
 
 import argparse
 
@@ -13,8 +11,7 @@ parser.add_argument('--dataroot', type=str, default='data', help='path to datase
 opt = parser.parse_args()
 
 dataroot = opt.dataroot
-csv_file = '/root/data/lwh_code/shap-e/datasets/ShapeNet/text2shape/captions.tablechair.csv'
-#csv_file = f'{dataroot}/ShapeNet/text2shape/captions.tablechair.csv'
+csv_file = f'{dataroot}/text2shape/captions.tablechair.csv'
 
 assert os.path.exists(csv_file)
 
@@ -47,9 +44,7 @@ for phase in ['train', 'test']:
         data_phase = train_data
     else:
         data_phase = test_data
-    out_csv = f'/root/data/lwh_code/shap-e/datasets/ShapeNet/text2shape/captions.tablechair_{phase}.csv'
-
-    #out_csv = f'{dataroot}/ShapeNet/text2shape/captions.tablechair_{phase}.csv'
+    out_csv = f'{dataroot}/text2shape/captions.tablechair_{phase}.csv'
     with open(out_csv, 'wt') as f:
         writer = csv.writer(f, delimiter=',')
         writer.writerow(header)
