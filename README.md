@@ -30,9 +30,9 @@ pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --ind
 ### Data Preparation
 1. **Download and preprocess the datasets**
 
-   For Text2shape, fisrt download [ShapeNet](https://shapenet.org/), then download the corresponding [Text Descriptions](http://text2shape.stanford.edu/dataset/captions.tablechair.csv) from [Text2shape](http://text2shape.stanford.edu/) website.
+   For Text2shape, fisrt download [ShapeNet](https://shapenet.org/) dataset in .obj format, then download the corresponding [Text Descriptions](http://text2shape.stanford.edu/dataset/captions.tablechair.csv) from [Text2shape](http://text2shape.stanford.edu/) website.
 
-   Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) to **the path of the ShapeNet**, then run the script to convert them into image-text pairs 
+   Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) as **the path of the ShapeNet**, then run the script to convert them into image-text pairs 
 	```bash
 	## Note that the mesh data needs to be in .obj format
 	python ./preprocess/obj2img.py
