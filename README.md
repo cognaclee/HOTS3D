@@ -1,6 +1,6 @@
 # HOTS3D
 Hyper-spherical Optimal Transport for Semantic Alignment in Text-to-3D End-to-end Generation
-[![](https://img.shields.io/badge/Paper-arXiv-green?style=plastic&logo=arXiv&logoColor=green)](https://arxiv.org/pdf/2407.14419)
+[![](https://img.shields.io/badge/Paper-arXiv-green?style=plastic&logo=arXiv&logoColor=green)](https://ieeexplore.ieee.org/abstract/document/11072368?casa_token=YObIajrfxCwAAAAA:3afmFQySRCqSUCNGxnIHmftxx00ZaRb2WgnVBk-j7rcfVemyBCYERZjFytl-X2viwHGwMMix63piBQ)
 [![](https://img.shields.io/badge/Paper-PDF-red?style=plastic&logo=adobeacrobatreader&logoColor=red)](https://arxiv.org/pdf/2407.14419)
 
 ## Introduction
