@@ -214,3 +214,4 @@ if __name__ == "__main__":
     FLAGS.save_root = os.path.join(SAVE_ROOT,'test')
     obj_to_images_text_pair(FLAGS,model_list,text_list,render_model,cameras)
 
+
