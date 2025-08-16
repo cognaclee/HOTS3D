@@ -28,13 +28,15 @@ conda activate HOTS3D
 pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
 ```
 ### Data Preparation
-1. **Download the datasets** [text2shape](http://text2shape.stanford.edu/) and [Objaverse from Cap3D](https://huggingface.co/datasets/tiange/Cap3D)
-2. Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) to **the path of the dataset meshes**, then run the script to convert them into image-text pairs 
+1. **Download the datasets**
+   For Text2shape, fisrt download [ShapeNet](https://shapenet.org/), then download the corresponding [Text Descriptions](http://text2shape.stanford.edu/dataset/captions.tablechair.csv) from [Text2shape](http://text2shape.stanford.edu/) website.
+   For Objaverse, download [Objaverse from Cap3D](https://huggingface.co/datasets/tiange/Cap3D)
+3. Set ```data_dir``` in [obj2img.py](./preprocess/obj2img.py) to **the path of the dataset meshes**, then run the script to convert them into image-text pairs 
 	```bash
 	## Note that the mesh data needs to be in .obj format
 	python ./preprocess/obj2img.py
 	```
-3. **Set the data paths and run the script**
+4. **Set the data paths and run the script**
 	```
 	python ./proprocess/save CLIP_feature.py
 	```
