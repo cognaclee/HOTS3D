@@ -5,13 +5,6 @@ import numpy as np
 import os
 
 class textImageDataset(Dataset):
-    '''
-    The second class is SphereDataset, which also inherits from the Dataset 
-    class in PyTorch. It takes a path to a HDF5 file that contains point clouds 
-    and normals of spheres with different radii and positions. 
-    It also takes a scale mode to normalize the point clouds, and an optional 
-    transform to apply to the data.
-    '''
     
     def __init__(self, text_dir, img_dir, text_file=None):
         '''
