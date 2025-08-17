@@ -40,7 +40,7 @@ pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --ind
  
    For Objaverse, download [Rendered Image](https://huggingface.co/datasets/tiange/Cap3D/tree/main/misc/RenderedImage_zips) and [Text Descriptions](https://huggingface.co/datasets/tiange/Cap3D/blob/main/misc/Cap3D_automated_Objaverse.csv) of Objaverse from [Cap3D](https://huggingface.co/datasets/tiange/Cap3D).
    
-2. **Set the dataset name and data paths and run the script to get paired CLIP image-text features** for training.
+2. Set the **dataset name and paths** and run the script to get **paired CLIP image-text features** for training.
 	```
 	python ./proprocess/save CLIP_feature.py
 	```
