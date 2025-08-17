@@ -38,12 +38,6 @@ def text2ShapeDataset(dataroot, phase='train', cat='all',max_dataset_size=None):
         header = next(reader, None)
 
         data = [row for row in reader]
-
-    with open(f'{dataroot}/dataset_info_files/info-shapenet.json') as f:
-        info = json.load(f)
-
-    cat_to_id = info['cats']
-    id_to_cat = {v: k for k, v in cat_to_id.items()}
         
     assert cat.lower() in ['all', 'chair', 'table']
     if cat == 'all':
@@ -105,7 +99,7 @@ if __name__ == '__main__':
     img_list, text_list, name_list = text2ShapeDataset(dataroot, 
                                             phase=phase, cat='all',max_dataset_size=max_dataset_size)
     '''
-    text_file = './datasets/text2shape/test_text.txt'  
+    text_file = './datasets/text2shape/test/text.txt'  
     text_list = []
     orders = []
     with open(text_file, 'r') as f:
@@ -123,7 +117,6 @@ if __name__ == '__main__':
     for idx in orders:
         subdir = os.path.join(image_dir,str(idx))
         img20 = glob(subdir+'/*.'+'png')
-        #print('idx=',idx,'img20=',len(img20))
         img_list = img_list+img20
 
     print('img_list=',len(img_list))
@@ -158,8 +151,6 @@ if __name__ == '__main__':
         
         with torch.no_grad():
             text_features = clip_model(batch_size=batch_size, texts=prompts)
-            print('i=',i)
-            #print('text_latents.shape=',text_latents.shape)
             image_features = clip_model(batch_size=batch_size, images=imgs)
 
             image_features = image_features / image_features.norm(dim=-1, keepdim=True)
@@ -181,11 +172,6 @@ if __name__ == '__main__':
             one_precious = np.sum(flag)
             clip_r_precious += one_precious
             print('*** Batch clip_r_precious = ',one_precious/batch_size)
-            '''
-            # k = 1,  clip_r_precious = 0.3325
-            pred = clip_prediction[:,0].cpu().numpy()//20
-            clip_r_precious += np.sum(pred==gt_idx)
-            '''
             all_samples += batch_size
 
         new_entry = (prompts, img_names, clip_prediction)
