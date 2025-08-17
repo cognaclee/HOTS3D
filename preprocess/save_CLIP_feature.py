@@ -10,7 +10,7 @@ from tqdm import tqdm
 import numpy as np
 import time
 import pandas as pd
-
+import argparse
 
 from shap_e.models.generation.pretrained_clip import FrozenImageCLIP
 from shap_e.diffusion.sample import sample_latents
@@ -29,75 +29,29 @@ def load_image(image_path: str):
         img.load()
     return img
 
+def text2ShapeDataset(dataroot, phase='train', cmax_dataset_size=None):
+    data_folders = os.path.join(dataroot, phase)
 
-
-def text2ShapeDataset(dataroot, phase='train', cat='all',max_dataset_size=None):
-    text_csv = f'{dataroot}/ShapeNet/text2shape/captions.tablechair_{phase}.csv'
-
-    with open(text_csv) as f:
-        reader = csv.reader(f, delimiter=',')
-        header = next(reader, None)
-
-        data = [row for row in reader]
-
-    with open(f'{dataroot}/dataset_info_files/info-shapenet.json') as f:
-        info = json.load(f)
-
-    cat_to_id = info['cats']
-    id_to_cat = {v: k for k, v in cat_to_id.items()}
-        
-    assert cat.lower() in ['all', 'chair', 'table']
-    if cat == 'all':
-        valid_cats = ['chair', 'table']
-    else:
-        valid_cats = [cat]
-        
-    model_list = []
     name_list = []
     text_list = []
+    text_file = os.path.join(data_folders, 'text.txt')
+    with open(text_file, 'r') as f:
+        for line in f.readlines():
+            line = line.strip('\n') 
+            text_list.append(line)
 
-    #for d in tqdm(data, total=len(data), desc=f'readinging text data from {text_csv}'):
-    for d in tqdm(data, total=len(data)):
-        id, model_id, text, cat_i, synset, subSynsetId = d
-            
-        if cat_i.lower() not in valid_cats:
-            continue
-            
-        png_path = f'{dataroot}/ShapeNet/PNG/{synset}/{model_id}/'
-        model_name = f'/{synset}/{model_id}'
-
-        if not os.path.exists(png_path):
-            continue
-            # {'Chair': 26523, 'Table': 33765} vs {'Chair': 26471, 'Table': 33517}
-            # not sure why there are some missing files
-        else:
-            png_list = glob(png_path+'/*.'+'png')
-        
-        if phase=='train':
-            model_list = model_list + png_list
-            text_list = text_list + [text]*len(png_list)
-            name_list = name_list+ [model_name]*len(png_list)
-        else:
-            text_list = text_list + [text]*2
-            name_list = name_list+ [model_name]*2
-            #idx = np.random.randint(0, len(png_list), size = (2,),dtype=np.int64)
-            png_ch = np.random.choice(png_list, 2, replace=False).tolist()
-            #print('idx=',idx)
-            #print('png_ch=',png_ch)
-            #model_list = model_list + png_list[idx]
-            model_list = model_list + png_ch
-        
-        if (max_dataset_size is not None) and (len(model_list)>max_dataset_size):
-            break
-
+    name_file = os.path.join(data_folders, 'name.txt')
+    with open(name_file, 'r') as f:
+        for line in f.readlines():
+            line = line.strip('\n') 
+            name_list.append(line)
 
     if max_dataset_size is not None:
-        model_list = model_list[:max_dataset_size]
         text_list = text_list[:max_dataset_size]
         name_list = name_list[:max_dataset_size]
     print('[*] %d samples loaded.' % (len(model_list)))
 
-    return model_list, text_list, name_list
+    return name_list, text_list 
 
 
 def objaverseDataset(dataroot,max_dataset_size=None):
@@ -140,42 +94,56 @@ def objaverseDataset(dataroot,max_dataset_size=None):
 
 
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--dataset', type=str, choices=['text2shape', 'objaverse'], default='text2shape', help='which dataset to use')
+parser.add_argument('--dataroot', type=str, default="/mnt/data2/text2shape/")
+parser.add_argument('--save_dir', type=str, default="/mnt/data2/text2shape/features/")
+parser.add_argument('--batch_size', type=int, default=400)
+parser.add_argument('--max_dataset_size', type=int, default=None)
+parser.add_argument('--num_trial', type=int, default=1, help='Index of trial')
+FLAGS = parser.parse_args()
+
 ###################################################
 if __name__ == '__main__':
 
     clip_model = FrozenImageCLIP(device)
     
-
     #dataroot='./datasets/text2shape'
     dataroot='./datasets/text2shape/Cap3D/misc/RenderedImage_zips/'
-    batch_size = 400
-    phase = 'test'#'test'
-    max_dataset_size = None
-    #img_list, text_list, name_list = text2ShapeDataset(dataroot, phase=phase, cat='all',max_dataset_size=max_dataset_size)
-    img_list, text_list = objaverseDataset(dataroot, max_dataset_size=1200000)
+    batch_size = FLAGS.batch_size
+    phase = 'train'#'test'
+    max_dataset_size = FLAGS.max_dataset_size
+    if FLAGS.dataset == 'text2shape'
+        train_img_list, train_text_list = text2ShapeDataset(FLAGS.dataroot, 'train',max_dataset_size)
+        test_img_list, test_text_list = text2ShapeDataset(FLAGS.dataroot, 'test',max_dataset_size)
+    else:
+        img_list, text_list = objaverseDataset(FLAGS.dataroot, max_dataset_size)
+        
     rem = len(img_list)%(batch_size*10)
     if rem !=0:
         img_list = img_list[:-rem]
         text_list = text_list[:-rem]
     
-    ratio = 10
-    train_img_list = []
-    train_text_list = []
-    test_img_list = []
-    test_text_list = []
-    for i in range(0,len(img_list),ratio):
-        test_img_list.append(img_list[i])
-        test_text_list.append(text_list[i])
-        for j in range(1,ratio):
-            train_img_list.append(img_list[i+j])
-            train_text_list.append(text_list[i+j])
+    if FLAGS.dataset == 'objaverse'
+        ratio = 10
+        train_img_list = []
+        train_text_list = []
+        test_img_list = []
+        test_text_list = []
+        for i in range(0,len(img_list),ratio):
+            test_img_list.append(img_list[i])
+            test_text_list.append(text_list[i])
+            for j in range(1,ratio):
+                train_img_list.append(img_list[i+j])
+                train_text_list.append(text_list[i+j])
     
     
-    print('[*] %d sample pairs loaded.' % (len(img_list)))
-    print('[*] %d texts loaded.' % (len(text_list)))
+    print('[*] %d training sample pairs loaded.' % (len(train_img_list)))
+    print('[*] %d test sample pairs loaded.' % (len(test_img_list)))
     
     #"""
-    save_dir = '/mnt/data2/Objaverse/train/'  
+    save_dir = os.path.join(FLAGS.save_dir,'train')  
     
     text_save_dir = os.path.join(save_dir,'text')
     if not os.path.exists(text_save_dir):
@@ -205,8 +173,6 @@ if __name__ == '__main__':
         
         
         text_latents = clip_model(batch_size=batch_size, texts=prompts)
-        print('i=',i)
-        #print('text_latents.shape=',text_latents.shape)
         img_latents = clip_model(batch_size=batch_size, images=imgs)
         #img_latents = clip_model.embed_images_grid(imgs)#NDL
 
@@ -217,7 +183,7 @@ if __name__ == '__main__':
     print('1. Training dataset have been done! It has ',data_len, ' files')
     
     #"""
-    save_dir = '/mnt/data2/Objaverse/test/' 
+    save_dir = os.path.join(FLAGS.save_dir,'test') 
     text_save_dir = os.path.join(save_dir,'text')
     if not os.path.exists(text_save_dir):
         os.makedirs(text_save_dir)
@@ -249,8 +215,6 @@ if __name__ == '__main__':
         
         
         text_latents = clip_model(batch_size=batch_size, texts=prompts)
-        print('i=',i)
-        #print('text_latents.shape=',text_latents.shape)
         img_latents = clip_model(batch_size=batch_size, images=imgs)
         #img_latents = clip_model.embed_images_grid(imgs)#NDL
 
