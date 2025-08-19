@@ -64,6 +64,7 @@ def parse_args_and_logger():
     parser.add_argument('--save_dir', type=str, default='./training/', help='Folder for storing obj mesh')
     parser.add_argument('--test_batch_size', type=int, default=10, help='size of the batches for testing')#
     parser.add_argument('--trys', type=int, default=1, help='Orders of try')
+	parser.add_argument('--test_dir',type=str,default='/mnt/data2/zym/test-hots3d/objaverse/test/', help='Path to the test dataset directory')
     
     args = parser.parse_args()
 
