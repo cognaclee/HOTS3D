@@ -44,7 +44,7 @@ pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --ind
 2. Configure the ```dataset``` and ```dataroot``` in [save_CLIP_feature.py](./preprocess/save_CLIP_feature.py) script to point to **dataset name and its directory**, and set ```save_root``` to the path where you want the paired CLIP image-text features to be saved. Then, run the script as follows.
 
 	```
-	python ./proprocess/save_CLIP_feature.py
+	python ./preprocess/save_CLIP_feature.py
 	```
 
 ### Run HOTS3D
