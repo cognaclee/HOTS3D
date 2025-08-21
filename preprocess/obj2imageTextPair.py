@@ -4,6 +4,7 @@ import numpy as np
 import csv
 import json
 from glob import glob
+from tqdm import tqdm
 
 import torch
 from PIL import Image
@@ -120,9 +121,9 @@ def text2ShapeDataset(dataroot, phase='train', cat='all',max_dataset_size=None):
             # {'Chair': 26523, 'Table': 33765} vs {'Chair': 26471, 'Table': 33517}
             # not sure why there are some missing files
                 
-        model_list = model_list.append(obj_path)
-        text_list = text_list.append(text)
-        cats_list = cats_list.append(synset)
+        model_list.append(obj_path)
+        text_list.append(text)
+        cats_list.append(synset)
 
 
     if max_dataset_size is not None:
@@ -211,4 +212,5 @@ if __name__ == "__main__":
     model_list, text_list, _ = text2ShapeDataset(FLAGS.data_dir, phase='test', cat='all')
     FLAGS.save_root = os.path.join(SAVE_ROOT,'test')
     obj_to_images_text_pair(FLAGS,model_list,text_list,render_model,cameras)
+
 
