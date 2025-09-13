@@ -30,7 +30,7 @@ pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --ind
 ### Data Preparation
 1. **Download and preprocess the datasets**
 
-   For Text2shape, first download [ShapeNet](https://shapenet.org/) dataset in .obj format, and then download the corresponding [Text Descriptions](http://text2shape.stanford.edu/dataset/captions.tablechair.csv) from [Text2shape](http://text2shape.stanford.edu/) website. Ensure both the ShapeNet dataset and Text Descriptions file are placed in the same directory.
+   For Text2shape, first download [ShapeNet](https://huggingface.co/datasets/ShapeNet/ShapeNetCore) dataset in .obj format, and then download the corresponding [Text Descriptions](http://text2shape.stanford.edu/dataset/captions.tablechair.csv) from [Text2shape](http://text2shape.stanford.edu/) website. Ensure both the ShapeNet dataset and Text Descriptions file are placed in the same directory.
 
     Next, configure the ```data_dir``` in [obj2imgTextPair.py](./preprocess/obj2imgTextPair.py) script to point to **your Text2Shape directory** and  ```save_root``` to the path where you want the rendered images to be stored. Finally, run the script to generate the image-text pairs. 
 	```bash
