@@ -20,7 +20,7 @@ optimization during the testing phase, resulting in stronger generalization capa
 git clone https://github.com/cognaclee/HOTS3D.git
 cd HOTS3D
 
-conda env create -y environments.yml
+conda env create -f environments.yml
 
 conda activate HOTS3D
 
