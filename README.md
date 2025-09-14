@@ -20,13 +20,18 @@ optimization during the testing phase, resulting in stronger generalization capa
 git clone https://github.com/cognaclee/HOTS3D.git
 cd HOTS3D
 
+# create conda envrionment
+conda env create -f environment.yml
+conda activate HOTS3D
+
 # install pytorch
 pip install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
 
-# create conda envrionment
-conda env create -f environment.yml
+# install the required packages
+pip install git+https://github.com/openai/CLIP.git@main
+pip install git+https://github.com/openai/shap-e.git@main
+pip install git+https://github.com/facebookresearch/pytorch3d.git@main
 
-conda activate HOTS3D
 ```
 ### Data Preparation
 1. **Download and preprocess the datasets**
