@@ -33,7 +33,7 @@ pip install git+https://github.com/openai/shap-e.git@main
 pip install git+https://github.com/facebookresearch/pytorch3d.git@main
 
 ```
-If you face issues installing PyTorch3D, you could try it the following script:
+If you encounter issues installing PyTorch3D, you can try the following script:
 ```bash
 pip install pytorch3d==0.7.4 -f https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py310_cu118_pyt201/download.html
 
