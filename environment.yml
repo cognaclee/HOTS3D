@@ -26,7 +26,6 @@ dependencies:
   - pip=24.2
   - pysocks=1.7.1
   - python=3.10.0
-  - pytorch3d=0.7.4
   - readline=8.2
   - requests=2.32.3
   - setuptools=75.1.0
